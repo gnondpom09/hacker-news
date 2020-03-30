@@ -17,9 +17,9 @@ export class TopStoriesPage implements OnInit, OnDestroy {
   constructor(private itemService: ItemService) { }
 
   ngOnInit() {
-    this.itemService.loadItems(0, 10).subscribe(items => {
-      this.items = items;
-    });
+    // this.subscription = this.itemService.loadItems(0, 10).subscribe(items => {
+    //   this.items = items;
+    // });
   }
 
   ngOnDestroy() {

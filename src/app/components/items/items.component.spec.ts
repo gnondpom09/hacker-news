@@ -21,21 +21,27 @@ describe('itemsComponent', () => {
     }));
 
   it('Should display list of items', () => {
-    component.items = [
-      { id: 1,
-      title: 'item 1',
-      url: 'http://www.example1.com',
-      by: 'author',
-      time: 1478576387,
-      score: 768
-    },
-    { id: 2,
-      title: 'item 2',
-      url: 'http://www.example2.com',
-      by: 'author',
-      time: 1478576387,
-      score: 436
-    }];
+    component.items = {
+      offset: 0,
+      limit: 10,
+      total: 2,
+      results: [
+        { id: 1,
+          title: 'item 1',
+          url: 'http://www.example1.com',
+          by: 'author',
+          time: 1478576387,
+          score: 768
+        },
+        { id: 2,
+          title: 'item 2',
+          url: 'http://www.example2.com',
+          by: 'author',
+          time: 1478576387,
+          score: 436
+        }
+      ]
+    };
     fixture.detectChanges();
     const debugElements = fixture.debugElement.queryAll(By.css('h2'));
     expect(debugElements.length).toBe(2);
@@ -44,7 +50,12 @@ describe('itemsComponent', () => {
   });
 
   it('Should have no items', () => {
-    component.items = [];
+    component.items = {
+      offset: 0,
+      limit: 10,
+      total: 0,
+      results: []
+    };
     fixture.detectChanges();
     const debugElement$ = fixture.debugElement.query(By.css('p'));
     expect(debugElement$).not.toBeNull();
