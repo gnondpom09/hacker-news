@@ -8,11 +8,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { TimeAgoPipe } from './pipes/time-ago/time-ago.pipe';
+
+import { ServicesModule } from './services/services.module';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, TimeAgoPipe],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    ServicesModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
